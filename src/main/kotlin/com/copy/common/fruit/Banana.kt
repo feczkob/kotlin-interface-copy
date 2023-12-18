@@ -1,13 +1,13 @@
-package com.copy.fruit
+package com.copy.common.fruit
 
 data class Banana(
     override val name: String = "Banana",
     override val color: String = "Yellow",
     override val taste: Taste = Taste.SWEET,
-    val length: Int,
+    val length: Int = 10,
 ) : Fruit {
 
-    // * uses copy from Fruit
+    // * uses its copy method
     override fun copy(
         name: String,
         color: String,
@@ -16,6 +16,6 @@ data class Banana(
         name = name,
         color = color,
         taste = taste,
-        length = length
+        length = length,
     )
 }
