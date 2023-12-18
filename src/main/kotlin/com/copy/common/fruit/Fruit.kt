@@ -1,4 +1,4 @@
-package com.copy.fruit
+package com.copy.common.fruit
 
 interface Fruit {
     val name: String
@@ -11,3 +11,8 @@ interface Fruit {
         taste: Taste = this.taste,
     ): Fruit
 }
+
+enum class Taste {
+    SWEET, SOUR, BITTER, SALTY, UMAMI
+}
+
