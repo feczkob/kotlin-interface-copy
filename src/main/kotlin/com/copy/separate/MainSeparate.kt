@@ -30,9 +30,9 @@ fun main() {
     val bananaModifier = BananaModifierImpl()
     val tomatoModifier = TomatoModifierImpl()
 
-    val modifiedApple2 = appleModifier.modify(apple)
-    val modifiedBanana2 = bananaModifier.modify(banana)
-    val modifiedTomato2 = tomatoModifier.modify(tomato)
+    val modifiedApple2 = appleModifier.modifyName(apple)
+    val modifiedBanana2 = bananaModifier.modifyName(banana)
+    val modifiedTomato2 = tomatoModifier.modifyName(tomato)
 
     println(modifiedApple2)
     println(modifiedBanana2)
