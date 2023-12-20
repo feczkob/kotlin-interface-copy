@@ -5,7 +5,7 @@ import com.copy.separate.fruit.Tomato
 
 class TomatoModifierImpl : FruitModifier<Tomato> {
 
-    override fun modify(fruit: Tomato): Tomato =
+    override fun modifyName(fruit: Tomato): Tomato =
         Tomato(
             name = "Modified ${fruit.name}",
             color = fruit.color,

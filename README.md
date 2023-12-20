@@ -6,9 +6,13 @@ We often use interfaces to define a contract for a set of our classes in Object 
 in order to make them immutable. Furthermore, not only `data` but also regular classes 
 ([why wouldn't I make every eligible class a data class?](https://stackoverflow.com/questions/39650646/why-wouldnt-i-make-every-eligable-kotlin-class-a-data-class)) 
 may implement the interface that do not have the `copy` method by default.
-Adding these two features we end up with immutable classes that conform to a common interface, but we
-are not able to handle them uniformly, which makes us to retrieve the actual types of our objects each time and either 
-invoke the `copy` method on them or modify them on some other way.
+These two features together yield to immutable classes that conform to a common interface, without the possibility
+of handling them uniformly (i.e. without the need to know their actual (sub)types when dealing with the interface),
+that leads to retrieving the actual (sub)types of the objects each time and either 
+invoking the `copy` method or modifying them in some other way. We seek for a solution that allows us to update the properties of our objects
+in an easier manner, avoiding boilerplate and without the need of knowing their actual types.
+We assume that properties of the interface form a proper subset of the properties of the implementing classes properties'.
+Thus, the problem formulation is really similar to [this](https://stackoverflow.com/questions/77647393/abstract-over-the-copy-function-from-a-data-class).
 
 ## Examples
 The `Fruit` interface declares the `name`, `color` and `taste` properties as `val`, and the implementing classes
@@ -29,6 +33,8 @@ It's useful to combine it with the [is and !is operators](https://kotlinlang.org
 TODO
 
 ### 2 - Updating the `name` property with the `copy` method on the `Fruit` interface
+Defining `copy` on the interface and implement it in the subclasses 
+An `override` either calls the `constructor` or the `copy` method originating from the `data` class.
 
 #### 2.1 - Using methods
 
