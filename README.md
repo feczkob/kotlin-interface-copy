@@ -49,3 +49,5 @@ TODO
 - [Unchecked cast for Kotlin Collections](https://stackoverflow.com/questions/36569421/kotlin-how-to-work-with-list-casts-unchecked-cast-kotlin-collections-listkot)
 - [Unchecked cast at generic Kotlin factory](https://stackoverflow.com/questions/55053649/unchecked-cast-at-generic-kotlin-factory)
 - [Handling unchecked cast warning in Kotlin](https://stackoverflow.com/questions/61520115/is-there-any-way-to-handle-unchecked-cast-warning-without-using-supress-in-kotli)
+- [Copyable interface without arguments in Kotlin](https://stackoverflow.com/questions/43667628/write-a-copyable-interface-more-elegant-than-in-java)
+- [Arrow](https://arrow-kt.io/learn/overview/)
