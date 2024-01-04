@@ -18,7 +18,7 @@ class InterfaceCopyTest {
         val appleCommon: AppleCommon = AppleCommon()
         val appleSeparate: AppleSeparate = AppleSeparate()
 
-        val appleModifierCommon = FruitModifierImplCommon<AppleCommon>()
+        val appleModifierCommon = FruitModifierImplCommon()
         val appleModifierSeparate = AppleModifierImpl()
 
         assertEquals(
