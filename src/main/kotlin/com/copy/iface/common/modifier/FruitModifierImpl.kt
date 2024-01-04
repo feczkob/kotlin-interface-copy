@@ -3,12 +3,12 @@ package com.copy.iface.common.modifier
 import com.copy.iface.common.fruit.Fruit
 
 
-class FruitModifierImpl<T : Fruit> : FruitModifier<T> {
+class FruitModifierImpl : FruitModifier {
 
-    override fun modifyName(fruit: T): T {
+    override fun modifyName(fruit: Fruit): Fruit {
         return fruit.copy(
             name = "Modified ${fruit.name}",
-        ) as T
+        )
     }
 }
 

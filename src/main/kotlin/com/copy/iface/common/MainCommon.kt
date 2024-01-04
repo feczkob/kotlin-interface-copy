@@ -29,7 +29,7 @@ fun main() {
 
     // 2.2
     println("2.2")
-    val modifier = FruitModifierImpl<Fruit>()
+    val modifier = FruitModifierImpl()
 
     val modifiedApple2 = modifier.modifyName(apple)
     val modifiedBanana2 = modifier.modifyName(banana)
