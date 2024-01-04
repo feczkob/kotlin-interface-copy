@@ -7,5 +7,5 @@ class Tomato(
     val didIKnowThatItsAFruit: Boolean = false,
 ) : Fruit {
     override fun toString() =
-        "Pear(name='$name', color='$color', taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
+        "Tomato(name=$name, color=$color, taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
 }

@@ -23,5 +23,5 @@ class Tomato(
     ): Tomato = Tomato(name, color, taste, didIKnowThatItsAFruit)
 
     override fun toString() =
-        "Pear(name='$name', color='$color', taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
+        "Tomato(name=$name, color=$color, taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
 }
