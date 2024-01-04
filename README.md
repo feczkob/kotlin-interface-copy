@@ -3,7 +3,8 @@
 ## Implement copy method for interfaces
 :one:: We often use interfaces to define a contract for a set of our classes in Object Oriented Programming. Sometimes the implementing classes are 
 [`data` classes](https://kotlinlang.org/docs/data-classes.html) :package: that have powerful methods like `copy` :copyright: and `equals`.
-The [`copy` function](https://kotlinlang.org/docs/data-classes.html#copying) allows us to copy an object while altering some of its properties.
+The [`copy` function](https://kotlinlang.org/docs/data-classes.html#copying) allows us to copy an object while altering some of its properties. 
+
 :two:: It is also common to declare properties as `val` in order to make them immutable . Furthermore, not only `data` but also regular classes 
 ([why wouldn't I make every eligible class a `data` class?](https://stackoverflow.com/questions/39650646/why-wouldnt-i-make-every-eligable-kotlin-class-a-data-class)) 
 may implement the interface and those classes do not have the `copy` method by default.
