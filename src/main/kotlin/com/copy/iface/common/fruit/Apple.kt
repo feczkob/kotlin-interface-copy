@@ -6,7 +6,6 @@ data class Apple(
     override val taste: Taste = Taste.SWEET,
     val type: AppleType = AppleType.FUJI,
 ) : Fruit {
-
     // * uses its primary constructor
     override fun copy(
         name: String,
@@ -16,5 +15,7 @@ data class Apple(
 }
 
 enum class AppleType {
-    FUJI, GRANNY_SMITH, PINK_LADY
+    FUJI,
+    GRANNY_SMITH,
+    PINK_LADY,
 }

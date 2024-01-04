@@ -8,5 +8,7 @@ data class Apple(
 ) : Fruit
 
 enum class AppleType {
-    FUJI, GRANNY_SMITH, PINK_LADY
+    FUJI,
+    GRANNY_SMITH,
+    PINK_LADY,
 }

@@ -23,7 +23,6 @@ fun main() {
     println(modifiedBanana)
     println(modifiedTomato)
 
-
     // 1.2
     println("1.2")
     val appleModifier = AppleModifierImpl()
@@ -37,5 +36,4 @@ fun main() {
     println(modifiedApple2)
     println(modifiedBanana2)
     println(modifiedTomato2)
-
 }

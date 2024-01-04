@@ -6,16 +6,16 @@ data class Banana(
     override val taste: Taste = Taste.SWEET,
     val length: Int = 10,
 ) : Fruit {
-
     // * uses its copy method
     override fun copy(
         name: String,
         color: String,
         taste: Taste,
-    ): Banana = copy(
-        name = name,
-        color = color,
-        taste = taste,
-        length = length,
-    )
+    ): Banana =
+        copy(
+            name = name,
+            color = color,
+            taste = taste,
+            length = length,
+        )
 }

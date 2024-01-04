@@ -10,6 +10,7 @@ data class Person(
 ) {
     companion object
 }
+
 @optics
 data class Address(
     val street: Street = Street(),
@@ -17,6 +18,7 @@ data class Address(
 ) {
     companion object
 }
+
 @optics
 data class Street(
     val name: String = "Petofi Street",
@@ -24,6 +26,7 @@ data class Street(
 ) {
     companion object
 }
+
 @optics
 data class City(
     val name: String = "Miskolc",
