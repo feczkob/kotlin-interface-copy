@@ -7,5 +7,9 @@ interface Fruit {
 }
 
 enum class Taste {
-    SWEET, SOUR, BITTER, SALTY, UMAMI
+    SWEET,
+    SOUR,
+    BITTER,
+    SALTY,
+    UMAMI,
 }

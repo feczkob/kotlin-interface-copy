@@ -12,7 +12,6 @@ import com.copy.iface.common.modifier.FruitModifierImpl as FruitModifierImplComm
 import com.copy.iface.separate.fruit.Apple as AppleSeparate
 
 class InterfaceCopyTest {
-
     @Test
     fun `modifierImpls' results match - Apple`() {
         val appleCommon: AppleCommon = AppleCommon()

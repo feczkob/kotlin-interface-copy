@@ -14,17 +14,16 @@ fun main() {
 
     val modifiedPerson = Person.address.street.name.modify(person) { "Modified $it" }
 
-    val modifiedPerson2 = person.copy {
-        inside(Person.address.street) {
-            Street.name set "Modified ${person.address.street.name}"
-            Street.number set 456
+    val modifiedPerson2 =
+        person.copy {
+            inside(Person.address.street) {
+                Street.name set "Modified ${person.address.street.name}"
+                Street.number set 456
+            }
+            Person.address.city.name set person.address.city.name + " City"
         }
-        Person.address.city.name set person.address.city.name + " City"
-    }
-
 
     println("Original person: $person")
     println("Modified person: $modifiedPerson")
     println("Modified person2: $modifiedPerson2")
 }
-

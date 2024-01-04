@@ -6,7 +6,6 @@ import com.copy.iface.common.fruit.Tomato
 import org.junit.jupiter.api.Test
 
 class FruitModifierTest {
-
     @Test
     fun `modifyName() should modify the name of the fruit - Apple`() {
         // given

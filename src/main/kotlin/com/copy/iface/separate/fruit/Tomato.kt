@@ -6,6 +6,5 @@ class Tomato(
     override val taste: Taste = Taste.UMAMI,
     val didIKnowThatItsAFruit: Boolean = false,
 ) : Fruit {
-    override fun toString() =
-        "Tomato(name=$name, color=$color, taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
+    override fun toString() = "Tomato(name=$name, color=$color, taste=$taste, didIKnowThatItsAFruit=$didIKnowThatItsAFruit)"
 }

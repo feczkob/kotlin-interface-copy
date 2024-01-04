@@ -14,7 +14,7 @@ of handling them uniformly (i.e. without the need to know their actual (sub)type
 This leads to retrieving the actual (sub)types of the objects each time and either 
 invoking the `copy` method or modifying them in some other way. 
 
-We seek :eyeglasses: for a solution that allows us to update the properties of our objects in an easier manner, 
+We seek :eyes: for a solution that allows us to update the properties of our objects in an easier manner, 
 avoiding boilerplate and without the need of knowing their actual types.
 We want to define a method on the interface that lets us update its properties.
 We focus on the interface itself rather than the implementing classes: if the subtypes would really imply totally different flows 

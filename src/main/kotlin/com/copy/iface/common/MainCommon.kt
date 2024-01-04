@@ -2,14 +2,11 @@ package com.copy.iface.common
 
 import com.copy.iface.common.fruit.Apple
 import com.copy.iface.common.fruit.Banana
-import com.copy.iface.common.fruit.Fruit
 import com.copy.iface.common.fruit.Tomato
 import com.copy.iface.common.modifier.FruitModifierImpl
 import com.copy.iface.common.modifier.modifyNameInlined
 import com.copy.iface.common.modifier.modifyNameWithGenericParam
 import com.copy.iface.common.modifier.modifyNameWithoutGenericParam
-
-
 
 fun main() {
     val apple = Apple()
@@ -26,7 +23,6 @@ fun main() {
     println(modifiedBanana)
     println(modifiedTomato)
 
-
     // 2.2
     println("2.2")
     val modifier = FruitModifierImpl()
@@ -39,4 +35,3 @@ fun main() {
     println(modifiedBanana2)
     println(modifiedTomato2)
 }
-

@@ -1,13 +1,9 @@
 package com.copy.iface.common.modifier
 
 import com.copy.iface.common.fruit.Apple
-import com.copy.iface.common.modifier.modifyNameInlined
-import com.copy.iface.common.modifier.modifyNameWithGenericParam
-import com.copy.iface.common.modifier.modifyNameWithoutGenericParam
 import org.junit.jupiter.api.Test
 
 class ModifierMethodsTest {
-
     @Test
     fun `modifyNameWithoutGenericParam() should modify the name of the fruit - Apple`() {
         // given
