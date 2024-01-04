@@ -57,15 +57,22 @@ This approach would mean that a new `Modifier` class should be implemented for e
 and also a new method should be added to `FruitModifier` and implemented in its subclasses whenever we want to modify another property of `Fruit`.
 
 #### 2 - Updating the `name` property with the `copy` method on the `Fruit` interface
+:arrow_forward: See classes in `src/main/kotlin/com/copy/iface/common` and run `src/main/kotlin/com/copy/iface/common/MainCommon.kt`.
+
 We may define the `copy` method on the interface: this method takes all of the `Fruit` properties as arguments and returns a new `Fruit` object.
-An `override` of this either calls the `copy` method (`Apple` and `Banana`) originating from the `data` class or the constructor (`Tomato`).
+An `override` of this either calls the `copy` method (`Banana`) originating from the `data` class or the constructor (`Apple` and `Tomato`).
 
 It's important to note here that these methods should be defined only **once** :recycle:, and their implementation is very easy:
 they simply delegate to the appropriate object creation.
 
-:arrow_forward: See classes in `src/main/kotlin/com/copy/iface/common` and run `src/main/kotlin/com/copy/iface/common/MainCommon.kt`.
-
 :bulb: Play a bit with the `Tomato` class: add the `data` modifier to it and see what happens.
+<details>
+  <summary>Spoiler</summary>
+  
+  :exclamation: The IDE complains about the `copy` method that takes all primary constructor arguments as parameters:
+  > Conflicting overloads: public final fun copy(name: String = ..., color: String = ..., taste: Taste = ..., didIKnowThatItsAFruit: Boolean = ...): 
+  > Tomato defined in com.copy.iface.common.fruit.Tomato
+</details>
 
 ##### 2.1 - Using methods
 See `src/main/kotlin/com/copy/iface/common/modifier/ModifierMethods.kt`.
