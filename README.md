@@ -99,8 +99,8 @@ val modifiedApple: Fruit = apple.copy(name = "Modified ${apple.name}")
 </details>
 
 ##### Built-in copy method of the implementing data classes
-:bulb: As it was mentioned in the [Problem formulation](#problem-formulation), the `copy` method of the implementing `data` classes cannot 
-override the one defined on the interface. Replace the `Apple` class with the following:
+:bulb: As it was mentioned in the [Problem formulation](#problem-formulation), the `copy` method of the implementing `data` classes [cannot 
+override](https://youtrack.jetbrains.com/issue/KT-19618) the one defined on the interface. Replace the `Apple` class with the following:
 ```kotlin
 data class Apple(
     override val name: String = "Apple",
