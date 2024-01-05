@@ -2,7 +2,7 @@
 
 ## Implement copy method for interfaces
 :one:: We often use interfaces to define a contract for a set of our classes in Object Oriented Programming. Sometimes the implementing classes are 
-[`data` classes](https://kotlinlang.org/docs/data-classes.html) :package: that have powerful methods like `copy` :copyright: and `equals`.
+[`data` classes](https://kotlinlang.org/docs/data-classes.html) :package: that have powerful methods like `copy` and `equals`.
 The [`copy` function](https://kotlinlang.org/docs/data-classes.html#copying) allows us to copy an object while altering some of its properties. 
 
 :two:: It is also common to declare properties as `val` in order to make them immutable. Furthermore, not only `data` but also regular classes 
@@ -14,20 +14,32 @@ of handling them uniformly (i.e. without the need to know their actual (sub)type
 This leads to retrieving the actual (sub)types of the objects each time and either 
 invoking the `copy` method or modifying them in some other way. 
 
+### Problem formulation
 We seek :eyes: for a solution that allows us to update the properties of our objects in an easier manner, 
 avoiding boilerplate and without the need of knowing their actual types.
 We want to define a method on the interface that lets us update its properties.
 We focus on the interface itself rather than the implementing classes: if the subtypes would really imply totally different flows 
 (e.g. flows that operate on the subtype specific properties too), then the 
-**Visitor pattern** :cowboy_hat_face: should be taken into consideration as detailed [here](https://medium.com/javarevisited/java-write-code-thats-mode-readable-scalable-and-maintainable-6bbfd000809e).
-We assume that properties of the interface form a proper subset of the properties of the implementing classes properties'.
+**Visitor pattern** :cowboy_hat_face: should be taken into consideration as detailed [here](https://medium.com/javarevisited/java-write-code-thats-mode-readable-scalable-and-maintainable-6bbfd000809e). 
 Thus, the problem formulation is really similar to [this](https://stackoverflow.com/questions/77647393/abstract-over-the-copy-function-from-a-data-class).
+
+:warning: We assume that properties of the interface form a proper subset of the properties of the implementing (data) classes.
+
+:information_source: As we will see, the proposed solution does not work if
+1. the `copy` method is defined on the interface
+2. the implementing `data` class' properties are the same as the declared props of the interface
+<details>
+  <summary>Spoiler</summary>
+
+:exclamation: Even though the `data` class defines a `copy` method, we cannot mark it as an `override` of the one defined on the interface:
+> Function 'copy' generated for the data class has default values for parameters, and conflicts with member of supertype 'Fruit'
+</details>
 
 ### Demonstration
 The `Fruit` interface declares the `name`, `color` and `taste` properties as `val`, and the implementing classes
 extend this model with an appropriate property for demonstration: the `Apple` :apple:, `Banana` :banana: and `Tomato` :tomato: classes, 
 the former two are `data` classes, while the latter is a regular one.
-In the following we will update the `name` property of our `Fruit` objects, but keep in mind that any other property of 
+In the following subsections we will update the `name` property of our `Fruit` objects, but keep in mind that any other property of 
 the interface could be updated in a similar manner.
 
 #### 1 - Updating the `name` property without the defining the `copy` method on the `Fruit` interface
@@ -45,7 +57,7 @@ create a new object (for `Tomato`). Whenever we want to modify the name of the `
 we put this method into a dedicated service (but then what about the possibly modifiable other props of `Fruit`?).
 So we cannot _really_ deal with a `Fruit` as `Fruit`.
 Furthermore, this approach violates the _O_ (Open-closed principle: software entities should be open for extension, closed for modification) of the 
-[SOLID](https://en.wikipedia.org/wiki/SOLID) principles: a new branch should be added to the
+[SOLID](https://en.wikipedia.org/wiki/SOLID) principles :books:: a new branch should be added to the
 `when` expressions every time we create a new subtype of `Fruit` (this wouldn't happen often, but the possibility is there).
 
 ##### 1.2 - Using subclasses
@@ -62,8 +74,11 @@ and also a new method should be added to `FruitModifier` and implemented in its 
 
 We may define the `copy` method on the interface: this method takes all of the `Fruit` properties as arguments and returns a new `Fruit` object.
 An `override` of this either calls the `copy` method (`Banana`) originating from the `data` class or the constructor (`Apple` and `Tomato`).
+This method should have default values for all of its parameters, so that it can be called with an arbitrary number of arguments.
 
-_Notice that the name of the method is up to us: I have chosen `copy` because its purpose is the same as the `copy` method of the `data` classes._
+:information_source: The implementing `data` classes will have two `copy` methods: one from the interface and one from the `data` class.
+
+_Notice that the name of the method is up to us: the chosen `copy` name is appropriate because its purpose is the same as the `copy` method of the `data` classes._
 
 It's important to note here that these methods should be defined only **once** :recycle:, and their implementation is very easy:
 they simply delegate to the appropriate object creation.
@@ -83,6 +98,21 @@ val modifiedApple: Fruit = apple.copy(name = "Modified ${apple.name}")
   > Tomato defined in com.copy.iface.common.fruit.Tomato
 </details>
 
+##### Built-in copy method of the implementing data classes
+:bulb: As it was mentioned in the [Problem formulation](#problem-formulation), the `copy` method of the implementing `data` classes cannot 
+override the one defined on the interface. Replace the `Apple` class with the following:
+```kotlin
+data class Apple(
+    override val name: String = "Apple",
+    override val color: String = "Red",
+    override val taste: Taste = Taste.SWEET,
+) : Fruit
+```
+> Function 'copy' generated for the data class has default values for parameters, and conflicts with member of supertype 'Fruit'
+
+We cannot use the `copy` method of the `data` class because it lacks the `override` modifier. Because of this, the proposed solution
+would not work for `data` classes that have the same properties as the interface. 
+
 ##### 2.1 - Using methods
 See `src/main/kotlin/com/copy/iface/common/modifier/ModifierMethods.kt`.
 
@@ -94,7 +124,7 @@ they may or may not be used, the programmer has to decide which one to use in a 
 
 :warning: Since we declared `T` to be the subtype of `Fruit` with `<T : Fruit>`, in my opinion we can disregard this warning.
 
-##### 2.2 - Using a generic class
+##### 2.2 - Using a modifier interface
 See `src/main/kotlin/com/copy/iface/common/modifier/FruitModifier.kt` and its implementation.
 
 Similarly to [1.2](#12---using-subclasses) we can define a `FruitModifier` interface, but this time without the unnecessary 
@@ -105,7 +135,8 @@ to treat the `Fruit` objects uniformly.
 
 ### Conclusion
 :white_check_mark: This repository shows how to implement the `copy` method for an interface in order to handle these objects uniformly,
-without the need to retrieve their actual types and to reduce boilerplate and duplicated code.
+without the need to retrieve their actual types and to reduce boilerplate and duplicated code. Also, the same can be done
+for `abstract` classes.
 
 ### Resources
 - [Unchecked cast for Kotlin Collections](https://stackoverflow.com/questions/36569421/kotlin-how-to-work-with-list-casts-unchecked-cast-kotlin-collections-listkot)
