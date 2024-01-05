@@ -78,7 +78,7 @@ This method should have default values for all of its parameters, so that it can
 
 :information_source: The implementing `data` classes will have two `copy` methods: one from the interface and one from the `data` class.
 
-_Notice that the name of the method is up to us: the chosen `copy` name is appropriate because its purpose is the same as the `copy` method of the `data` classes._
+_Notice that the name of the method is up to us: the chosen `copy` name is suitable because its purpose is the same as the `copy` method of the `data` classes._
 
 It's important to note here that these methods should be defined only **once** :recycle:, and their implementation is very easy:
 they simply delegate to the appropriate object creation.
@@ -110,8 +110,8 @@ data class Apple(
 ```
 > Function 'copy' generated for the data class has default values for parameters, and conflicts with member of supertype 'Fruit'
 
-We cannot use the `copy` method of the `data` class because it lacks the `override` modifier. Because of this, the proposed solution
-would not work for `data` classes that have the same properties as the interface. 
+We cannot use the `copy` method of the `data` class as an implementation of the one defined on the interface since it lacks the `override` modifier. 
+Because of this, the proposed solution would not work for `data` classes that have the same properties as the interface. 
 
 ##### 2.1 - Using methods
 See `src/main/kotlin/com/copy/iface/common/modifier/ModifierMethods.kt`.
